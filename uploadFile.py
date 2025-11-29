@@ -3,8 +3,8 @@ from fastapi.responses import StreamingResponse
 from sqlalchemy.orm import Session
 from io import StringIO
 import csv
-import models
-from database import SessionLocal, engine, Base
+import app.models as models
+from utils.database import SessionLocal, engine, Base
 
 # Create all tables
 Base.metadata.create_all(bind=engine)
