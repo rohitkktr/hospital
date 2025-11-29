@@ -1,1 +1,18 @@
-test
+//patients input
+{
+  "patient_id": 15,
+  "anonymized_id": "PAT-20241129-8899",
+  "fName": "Harsh",
+  "lName": "Raj",
+  "Gender": "Male",
+  "Address1": "Sector 4, Main Road",
+  "Address2": "Near Shopping Mall",
+  "Address3": "Opp Metro",
+  "Email": "harsh@example.com",
+  "Emergencey_Contact1": "9876543210",
+  "Emergencey_Contact2": "9123456789",
+  "Emergencey_family_member_name": "Rakesh Raj",
+  "city": "Patna",
+  "state": "Bihar"
+}
+
