@@ -8,6 +8,8 @@ class BedBase(BaseModel):
     unit_id: int
     is_active: Optional[bool] = True
     
+
+    
 # -------------------- CREATE --------------------
 class BedCreate(BedBase):
     pass
