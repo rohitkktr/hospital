@@ -37,7 +37,7 @@ def get_patient(patient_id: int, db: Session = Depends(get_db)):
 # -------------------- UPDATE PATIENT --------------------
 @router.put("/{patient_id}", response_model=PatientResponse)
 def update_patient(patient_id: int, data: PatientUpdate, db: Session = Depends(get_db)):
-    patient = db.query(models.Patient).filter(models.Patient.id == patient_id).first()
+    patient = db.query(models.Patient).filter(models.Patient.patient_id == patient_id).first()
     if not patient:
         raise HTTPException(status_code=404, detail="Patient not found")
 
@@ -52,7 +52,7 @@ def update_patient(patient_id: int, data: PatientUpdate, db: Session = Depends(g
 # -------------------- DELETE PATIENT --------------------
 @router.delete("/{patient_id}")
 def delete_patient(patient_id: int, db: Session = Depends(get_db)):
-    patient = db.query(models.Patient).filter(models.Patient.id == patient_id).first()
+    patient = db.query(models.Patient).filter(models.Patient.patient_id == patient_id).first()
     if not patient:
         raise HTTPException(status_code=404, detail="Patient not found")
 
