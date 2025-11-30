@@ -4,7 +4,7 @@ from app.schemas.admissions import AdmissionCreate, AdmissionUpdate
 
 
 def create_admission(db: Session, data: AdmissionCreate):
-    obj = Admission(**data.model_dump())
+    obj = Admission(**data.dict())
     db.add(obj)
     db.commit()
     db.refresh(obj)

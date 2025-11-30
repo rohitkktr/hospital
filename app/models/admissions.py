@@ -12,10 +12,8 @@ class Admission(Base):
     unit_id = Column(BigInteger, ForeignKey("unit.id"))
     bed_id = Column(BigInteger, ForeignKey("bed.id"))
     restraint_id = Column(BigInteger, ForeignKey("restraint.restraint_id"), nullable=True)
-    admission_time = Column(DateTime)
-    reason = Column(String, nullable=True)
+    admitted_at = Column(DateTime)
     discharged_at = Column(DateTime, nullable=True)
-    is_active = Column(Boolean, default=True)
 
     patient = relationship("Patient", back_populates="admissions")
     unit = relationship("Unit", back_populates="admissions")
