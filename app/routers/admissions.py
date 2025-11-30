@@ -18,7 +18,7 @@ router = APIRouter(prefix="/admissions", tags=["Admissions"])
 def create_admission(data: AdmissionCreate, db: Session = Depends(get_db)):
 
     # Check patient
-    patient = db.query(models.Patient).filter(models.Patient.id == data.patient_id).first()
+    patient = db.query(models.Patient).filter(models.Patient.patient_id == data.patient_id).first()
     if not patient:
         raise HTTPException(status_code=404, detail="Patient not found")
 
@@ -61,8 +61,8 @@ def get_admission(admission_id: int, db: Session = Depends(get_db)):
     if not admission:
         raise HTTPException(status_code=404, detail="Admission not found")
 
-    patient = db.query(models.Patient).filter(models.Patient.id == admission.patient_id).first()
-    bed = db.query(models.Bed).filter(models.Bed.id == admission.bed_id).first()
+    patient = db.query(models.Patient).filter(models.Patient.patient_id == admission.patient_id).first()
+    bed = db.query(models.Bed).filter(models.Bed.bed_id== admission.bed_id).first()
 
     return {
         "id": admission.id,
