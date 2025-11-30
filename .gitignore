@@ -83,4 +83,4 @@ Thumbs.db
 # Project specific
 test.txt.txt
 uploadFile.py
-.env
+.env*
