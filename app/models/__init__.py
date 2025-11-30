@@ -5,3 +5,5 @@ from .units import Unit
 from .restraints import Restraint
 from .users import User
 from .roles import UserRole
+from .users import User
+from .roles import UserRole

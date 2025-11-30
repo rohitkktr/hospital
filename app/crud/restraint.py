@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
-from models.restraints import Restraint
-from schemas.restraints import RestraintCreate, RestraintUpdate
+from app.models.restraints import Restraint
+from app.schemas.restraints import RestraintCreate, RestraintUpdate
 
 
 def create_restraint(db: Session, data: RestraintCreate):
