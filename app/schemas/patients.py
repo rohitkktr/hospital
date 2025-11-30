@@ -32,7 +32,7 @@ class PatientUpdate(BaseModel):
 
 
 class PatientResponse(BaseModel):
-    id: int
+    patient_id: int
     fName: str
     lName: Optional[str]
     Gender: Optional[str]
@@ -40,8 +40,9 @@ class PatientResponse(BaseModel):
     Address2: Optional[str]
     Address3: Optional[str]
     Email: Optional[str]
-    Emergency_contact1: Optional[str]
-    Emergency_contact2: Optional[str]
+    Emergencey_Contact1: Optional[str]
+    Emergencey_Contact2: Optional[str]
+    Emergencey_family_member_name: Optional[str]
     city: Optional[str]
     state: Optional[str]
 

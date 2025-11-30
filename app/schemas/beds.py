@@ -7,7 +7,7 @@ class BedBase(BaseModel):
     label: str
     unit_id: int
     is_active: Optional[bool] = True
-    start_time: Optional[datetime] = None
+    
 # -------------------- CREATE --------------------
 class BedCreate(BedBase):
     pass
@@ -26,7 +26,6 @@ class BedResponse(BedBase):
 
 # -------------------- DETAILS (WITH restraint start_time) --------------------
 class BedDetailsResponse(BedResponse):
-    start_time: Optional[datetime]
     class Config:
         orm_mode = True
 
