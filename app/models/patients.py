@@ -1,13 +1,12 @@
 from sqlalchemy import Column, Integer, String, BigInteger, Boolean, Enum, ForeignKey, DateTime
 from sqlalchemy.orm import relationship
-from  utils.database import Base
+from app.utils.database import Base
 import enum
 
 # PATIENT
 class Patient(Base):
     __tablename__ = "patient"
     patient_id = Column(BigInteger, primary_key=True, index=True)
-    anonymized_id = Column(String(50), nullable=False, unique=True)
     fName = Column(String(100), nullable=True)
     lName = Column(String(100), nullable=True)
     Gender = Column(String(10), nullable=True)

@@ -1,6 +1,6 @@
 from sqlalchemy import Column, Integer, String, BigInteger, Boolean, Enum, ForeignKey, DateTime
 from sqlalchemy.orm import relationship
-from  utils.database import Base
+from app.utils.database import Base
 import enum
 
 # RESTRAINT

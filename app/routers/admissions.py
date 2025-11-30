@@ -1,9 +1,9 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from typing import List
-import models
-from utils.database import get_db
-from schemas.admissions import (
+from app import models
+from app.utils.database import get_db
+from app.schemas.admissions import (
     AdmissionCreate,
     AdmissionUpdate,
     AdmissionResponse,

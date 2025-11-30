@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
-from models.admissions import Admission
-from schemas.admissions import AdmissionCreate, AdmissionUpdate
+from app.models.admissions import Admission
+from app.schemas.admissions import AdmissionCreate, AdmissionUpdate
 
 
 def create_admission(db: Session, data: AdmissionCreate):

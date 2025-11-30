@@ -1,9 +1,9 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from typing import List
-import models
-from utils.database import get_db
-from schemas.patients import PatientCreate, PatientUpdate, PatientResponse
+from app import models
+from app.utils.database import get_db
+from app.schemas.patients import PatientCreate, PatientUpdate, PatientResponse
 
 router = APIRouter(prefix="/patients", tags=["Patients"])
 
@@ -19,15 +19,16 @@ def create_patient(data: PatientCreate, db: Session = Depends(get_db)):
 
 
 # -------------------- GET ALL PATIENTS --------------------
-@router.get("/", response_model=List[PatientResponse])
+@router.get("", response_model=List[PatientResponse])
 def get_patients(db: Session = Depends(get_db)):
-    return db.query(models.Patient).all()
+    p= db.query(models.Patient).all()
+    return p
 
 
 # -------------------- GET PATIENT BY ID --------------------
 @router.get("/{patient_id}", response_model=PatientResponse)
 def get_patient(patient_id: int, db: Session = Depends(get_db)):
-    patient = db.query(models.Patient).filter(models.Patient.id == patient_id).first()
+    patient = db.query(models.Patient).filter(models.Patient.patient_id == patient_id).first()
     if not patient:
         raise HTTPException(status_code=404, detail="Patient not found")
     return patient
@@ -36,7 +37,7 @@ def get_patient(patient_id: int, db: Session = Depends(get_db)):
 # -------------------- UPDATE PATIENT --------------------
 @router.put("/{patient_id}", response_model=PatientResponse)
 def update_patient(patient_id: int, data: PatientUpdate, db: Session = Depends(get_db)):
-    patient = db.query(models.Patient).filter(models.Patient.id == patient_id).first()
+    patient = db.query(models.Patient).filter(models.Patient.patient_id == patient_id).first()
     if not patient:
         raise HTTPException(status_code=404, detail="Patient not found")
 
@@ -51,7 +52,7 @@ def update_patient(patient_id: int, data: PatientUpdate, db: Session = Depends(g
 # -------------------- DELETE PATIENT --------------------
 @router.delete("/{patient_id}")
 def delete_patient(patient_id: int, db: Session = Depends(get_db)):
-    patient = db.query(models.Patient).filter(models.Patient.id == patient_id).first()
+    patient = db.query(models.Patient).filter(models.Patient.patient_id == patient_id).first()
     if not patient:
         raise HTTPException(status_code=404, detail="Patient not found")
 

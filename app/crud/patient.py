@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
-from models.patients import Patient
-from schemas.patients import PatientCreate, PatientUpdate
+from app.models.patients import Patient
+from app.schemas.patients import PatientCreate, PatientUpdate
 
 
 def create_patient(db: Session, data: PatientCreate):

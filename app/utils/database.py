@@ -12,13 +12,18 @@ DB_HOST = os.getenv("DB_HOST", "localhost")
 DB_PORT = os.getenv("DB_PORT", "3306")
 DB_NAME = os.getenv("DB_NAME", "testdb")
 
+from urllib.parse import quote_plus
+
+# URL-encode the password to safely include special characters like '@'
+_password_quoted = quote_plus(DB_PASSWORD or "")
+
 # SQLAlchemy URL
-DATABASE_URL = f"mysql+pymysql://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
+DATABASE_URL = f"mysql+pymysql://{DB_USER}:{_password_quoted}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
 
 # Create SQLAlchemy engine
 engine = create_engine(
     DATABASE_URL,
-    echo=True,  # Set False in production
+    echo=False,  # Set False in production
     future=True
 )
 

@@ -1,9 +1,9 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from typing import List
-import models
-from utils.database import get_db
-from schemas.units import UnitCreate, UnitUpdate, UnitResponse
+from app import models
+from app.utils.database import get_db
+from app.schemas.units import UnitCreate, UnitUpdate, UnitResponse
 
 router = APIRouter(prefix="/units", tags=["Units"])
 

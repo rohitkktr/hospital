@@ -35,7 +35,6 @@ class BedResponse(BaseModel):
 
 # PATIENT
 class PatientCreate(BaseModel):
-    anonymized_id: str
     fName: Optional[str] = None
     lName: Optional[str] = None
     Gender: Optional[str] = None
@@ -51,7 +50,6 @@ class PatientCreate(BaseModel):
 
 class PatientResponse(BaseModel):
     patient_id: int
-    anonymized_id: str
     fName: Optional[str]
     lName: Optional[str]
     Gender: Optional[str] = None
