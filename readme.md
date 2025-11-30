@@ -88,19 +88,17 @@ EXIT;
 
 ### 6. Run the Application
 
-You can run the app in two ways. Recommended: run from the project root so the `app` package is importable.
+You can run the app from either the project root or from inside the `app/` directory:
 
+**Option 1: From the project root (recommended for production)**
 ```bash
-# From the project root (recommended)
 uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
 ```
 
-If you prefer to run from the `app/` directory, set `PYTHONPATH` so the top-level package is available:
-
+**Option 2: From inside the `app/` folder (more convenient for development)**
 ```bash
-# From inside the app/ folder (less recommended)
-# ensure the project root is on PYTHONPATH
-PYTHONPATH=".." uvicorn main:app --reload --host 0.0.0.0 --port 8000
+cd app
+uvicorn main:app --reload --host 0.0.0.0 --port 8000
 ```
 
 The API will be available at: `http://localhost:8000`
