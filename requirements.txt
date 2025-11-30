@@ -5,6 +5,12 @@ pymysql==1.1.1
 python-dotenv==1.1.0
 passlib==1.7.4
 bcrypt==4.1.2
+<<<<<<< Updated upstream
 python-jose==3.3.0
 pydantic==2.5.0
 pydantic[email]==2.5.0
+=======
+python-jose
+pydantic
+pydantic[email]
+>>>>>>> Stashed changes
