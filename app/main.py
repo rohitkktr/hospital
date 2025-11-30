@@ -1,12 +1,22 @@
+import sys
+import os
+
+# Ensure the project root is on sys.path so 'app' package imports work
+# whether uvicorn is run from project root or from app/ directory
+_current_dir = os.path.dirname(os.path.abspath(__file__))
+_parent_dir = os.path.dirname(_current_dir)
+if _parent_dir not in sys.path:
+    sys.path.insert(0, _parent_dir)
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from utils.database import Base, engine
-from routers.patients import router as patients_router
-from routers.admissions import router as admissions_router
-from routers.beds import router as beds_router
-from routers.units import router as units_router
-from routers.restriants import router as restraints_router
-from routers.user import router as users_router
+from app.utils.database import Base, engine
+from app.routers.patients import router as patients_router
+from app.routers.admissions import router as admissions_router
+from app.routers.beds import router as beds_router
+from app.routers.units import router as units_router
+from app.routers.restraints import router as restraints_router
+from app.routers.user import router as users_router
 
 # -------------------- CREATE TABLES --------------------
 Base.metadata.create_all(bind=engine)
@@ -19,12 +29,16 @@ app = FastAPI(
 )
 
 # -------------------- CORS --------------------
-origins = ["*"]  # allow all origins (change in production)
+origins = [
+    "http://localhost",
+    "http://localhost:3000",
+    "http://localhost:8000",
+]
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
     allow_credentials=True,
-    allow_methods=["*"],
+    allow_methods=["GET", "POST", "PUT", "DELETE"],
     allow_headers=["*"]
 )
 

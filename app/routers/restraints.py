@@ -1,9 +1,9 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from typing import List
-import models
-from utils.database import get_db
-from schemas.restraints import RestraintCreate, RestraintUpdate, RestraintResponse
+from app import models
+from app.utils.database import get_db
+from app.schemas.restraints import RestraintCreate, RestraintUpdate, RestraintResponse
 
 router = APIRouter(prefix="/restraints", tags=["Restraints"])
 
