@@ -22,6 +22,7 @@ def create_patient(data: PatientCreate, db: Session = Depends(get_db)):
 @router.get("", response_model=List[PatientResponse])
 def get_patients(db: Session = Depends(get_db)):
     p= db.query(models.Patient).all()
+    
     return p
 
 

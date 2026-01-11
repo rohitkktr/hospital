@@ -14,3 +14,5 @@ class Restraint(Base):
 
     patient = relationship("Patient", back_populates="restraints")
     admissions = relationship("Admission", back_populates="restraint")
+
+## ENUM for Treatment Type
